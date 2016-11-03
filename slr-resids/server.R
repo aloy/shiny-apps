@@ -62,7 +62,9 @@ shinyServer(function(input, output) {
   
   output$data <- renderPlot({
     df <- data()
-    qplot(x, y, data = df, geom = c("point", "smooth"), method = "lm", se = FALSE) 
+    ggplot(data = df, mapping = aes(x = x, y = y)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE)
   })
   
   
